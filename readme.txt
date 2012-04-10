@@ -1,5 +1,5 @@
 === Robokassa for WooCommerce ===
-Contributors: loomst, akurganow
+Contributors: akurganow, loomst
 Tags: robokassa, payment getaway, woo commerce, woocommerce, ecommerce
 Requires at least: 3.0
 Tested up to: 3.3.1
