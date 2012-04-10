@@ -3,7 +3,7 @@ Contributors: loomst, akurganow
 Tags: robokassa, payment getaway, woo commerce, woocommerce, ecommerce
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 0.1
+Stable tag: 0.1.1
 
 Allows you to use Robokassa payment gateway with the WooCommerce plugin.
 
@@ -14,14 +14,13 @@ Allows you to use Robokassa payment gateway with the WooCommerce plugin.
 
 
 *В Robokassa прописываем:
-
 Result URL: http://your_domain/?robokassa=result
-
 Success URL: http://your_domain/?robokassa=success
-
 Fail URL: http://your_domain/woocommerce/?robokassa=fail
-
 Метод отсылки данных: POST
+
+
+*В бесплатной версии в корзине и на страницах оформления заказа, присутствуют ссылки на авторов плагина
 
 
 == Installation ==
@@ -32,6 +31,7 @@ Fail URL: http://your_domain/woocommerce/?robokassa=fail
 
 
 == Changelog ==
-    
+= 0.1.1 =
+* Added restriction to the free version, previous version are not available
 = 0.1 =
 * First public release
