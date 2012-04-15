@@ -3,8 +3,8 @@
   Plugin URI: 
   Description: Allows you to use Robokassa payment gateway with the WooCommerce plugin.
   Version: 0.1.1
-  Author: Denis Alekseev, Alexander Kurganov
-  Author URI: http://loom-studio.net/, http://akurganow.ru
+  Author: Alexander Kurganov
+  Author URI: http://polzo.ru
  */
 
 
