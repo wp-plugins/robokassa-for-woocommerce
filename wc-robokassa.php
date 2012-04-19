@@ -2,7 +2,7 @@
   Plugin Name: Robokassa Payment Gateway
   Plugin URI: 
   Description: Allows you to use Robokassa payment gateway with the WooCommerce plugin.
-  Version: 0.1.3
+  Version: 0.2
   Author: Alexander Kurganov
   Author URI: http://polzo.ru
  */
@@ -116,20 +116,6 @@ class WC_ROBOKASSA extends WC_Payment_Gateway
 	}
 	
 	/**
-	* Admin Panel Options Processing
-	* - Saves the options to the DB
-	**/
-	public function process_admin_options() {
-		if(isset($_POST['robokassa_enabled'])) update_option('robokassa_enabled', jigowatt_clean($_POST['robokassa_enabled']));
-		else @delete_option('robokassa_enabled');
-		if(isset($_POST['robokassa_title'])) update_option('robokassa_title', jigowatt_clean($_POST['woocommerce_robokassa_title'])); else @delete_option('robokassa_title');
-		if(isset($_POST['robokassa_merchant'])) update_option('robokassa_merchant', jigowatt_clean($_POST['robokassa_merchant'])); else @delete_option('robokassa_merchant');
-		if(isset($_POST['robokassa_key1'])) update_option('robokassa_key1', jigowatt_clean($_POST['robokassa_key1'])); else @delete_option('robokassa_key1');
-		if(isset($_POST['robokassa_key2'])) update_option('robokassa_key2', jigowatt_clean($_POST['woocommerce_robokassa_key2'])); else @delete_option('woocommerce_robokassa_key2');
-		if(isset($_POST['robokassa_test'])) update_option('robokassa_test', jigowatt_clean($_POST['robokassa_test'])); else @delete_option('robokassa_test');
-	}
-	
-	/**
 	* Admin Panel Options 
 	* - Options for bits like 'title' and availability on a country-by-country basis
 	**/
@@ -139,20 +125,20 @@ class WC_ROBOKASSA extends WC_Payment_Gateway
 		<p><?php _e('Настройка приема электронных платежей через Merchant ROBOKASSA.', 'woocommerce'); ?></p>
 		<table class="form-table">
 		<?php
-			if ($this->is_valid_for_use())
-			{
-				$this->generate_settings_html();
-			}
-			else
-			{
+			if ( $this->is_valid_for_use() ) :
+    	
+    			// Generate the HTML For the settings form.
+    			$this->generate_settings_html();
+    		
+    		else :
 		?>
 		<div class="inline error"><p><strong><?php _e('Шлюз отключен', 'woocommerce'); ?></strong>: <?php _e('ROBOKASSA не поддерживает валюты Вашего магазина.', 'woocommerce' ); ?></p></div>
 		<?php
-			}
+			endif;
 		?>
-		</table>
+		</table><!--/.form-table-->
 		<?php
-    }
+    } // End admin_options()
 
 	function init_form_fields()
 	{
