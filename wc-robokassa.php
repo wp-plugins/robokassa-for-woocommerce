@@ -2,7 +2,7 @@
   Plugin Name: Robokassa Payment Gateway
   Plugin URI: 
   Description: Allows you to use Robokassa payment gateway with the WooCommerce plugin.
-  Version: 0.2.1
+  Version: 0.3
   Author: Alexander Kurganov
   Author URI: http://polzo.ru
  */
@@ -28,16 +28,16 @@
  /**
  * Add roubles in carrencies
  * 
- * @since 0.1
+ * @since 0.3
  */
-function add_my_currency_symbol( $currency_symbol, $currency ) {
+function robokassa_rur_currency_symbol( $currency_symbol, $currency ) {
     if($currency == "RUR") {
         $currency_symbol = 'р.';
     }
     return $currency_symbol;
 }
 
-add_filter( 'woocommerce_currency_symbol', 'add_my_currency_symbol', 10, 2 );
+add_filter( 'woocommerce_currency_symbol', 'robokassa_rur_currency_symbol', 10, 2 );
 
 function add_my_currency( $currencies ) {
     $currencies["RUR"] = 'Russian Roubles (р.)';
