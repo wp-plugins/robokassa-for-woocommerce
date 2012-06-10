@@ -32,6 +32,8 @@ Allows you to use Robokassa payment gateway with the WooCommerce plugin.
 
 
 == Changelog ==
+= 0.4 =
+* Другие мелкие исправления
 = 0.3 =
 * Решена проблема с конфликтующими функциями
 * Другие мелкие исправления
