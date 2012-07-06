@@ -2,7 +2,7 @@
   Plugin Name: Robokassa Payment Gateway
   Plugin URI: 
   Description: Allows you to use Robokassa payment gateway with the WooCommerce plugin.
-  Version: 0.4
+  Version: 0.4.1
   Author: Alexander Kurganov
   Author URI: http://polzo.ru
  */
@@ -170,14 +170,14 @@ class WC_ROBOKASSA extends WC_Payment_Gateway
 					'title' => __('Пароль #1', 'woocommerce'),
 					'type' => 'password',
 					'description' => __('Пожалуйста введите паоль №1.', 'woocommerce'),
-					'default' => ''
+					'default' => 'demo'
 				),
 				'robokassa_key2' => array
 				(
 					'title' => __('Пароль #2', 'woocommerce'),
 					'type' => 'password',
 					'description' => __('Пожалуйста введите пароль №2.', 'woocommerce'),
-					'default' => ''
+					'default' => 'demo'
 				),
 				'testmode' => array(
 					'title' => __('Тест режим', 'woocommerce'),
@@ -325,7 +325,7 @@ class WC_ROBOKASSA extends WC_Payment_Gateway
 	{
 		global $woocommerce;
 
-		if (isset($_GET) AND $_GET['robokassa'] == 'result')
+		if (isset($_GET['robokassa']) AND $_GET['robokassa'] == 'result')
 		{
 			@ob_clean();
 
@@ -340,7 +340,7 @@ class WC_ROBOKASSA extends WC_Payment_Gateway
 				wp_die('IPN Request Failure');
 			}
 		}
-		else if (isset($_GET) AND $_GET['robokassa'] == 'success')
+		else if (isset($_GET['robokassa']) AND $_GET['robokassa'] == 'success')
 		{
 			$inv_id = $_POST['InvId'];
 			$order = new WC_Order($inv_id);
@@ -349,7 +349,7 @@ class WC_ROBOKASSA extends WC_Payment_Gateway
 			wp_redirect(add_query_arg('key', $order->order_key, add_query_arg('order', $inv_id, get_permalink(get_option('woocommerce_thanks_page_id')))));
 			exit;
 		}
-		else if (isset($_GET) AND $_GET['robokassa'] == 'fail')
+		else if (isset($_GET['robokassa']) AND $_GET['robokassa'] == 'fail')
 		{
 			$inv_id = $_POST['InvId'];
 			$order = new WC_Order($inv_id);
