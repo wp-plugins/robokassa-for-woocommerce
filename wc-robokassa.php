@@ -2,7 +2,7 @@
   Plugin Name: Robokassa Payment Gateway
   Plugin URI: 
   Description: Allows you to use Robokassa payment gateway with the WooCommerce plugin.
-  Version: 0.4.1
+  Version: 0.5
   Author: Alexander Kurganov
   Author URI: http://polzo.ru
  */
@@ -399,5 +399,11 @@ function add_robokassa_gateway($methods)
 
 add_filter('woocommerce_payment_gateways', 'add_robokassa_gateway');
 }
+
+
+function footer_links(){
+	echo '<div style="text-align:center;background:none;">Поддержка <a href="http://robokassa.ru/ru/">robokassa</a> реализована c помощью плагина <a href="http://polzo.ru/wc-robokassa">wc-robokassa</a></div>';
+}
+add_action('wp_footer', 'footer_links');
 
  ?>
