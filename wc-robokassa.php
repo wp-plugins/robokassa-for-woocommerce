@@ -2,7 +2,7 @@
   Plugin Name: Robokassa Payment Gateway
   Plugin URI: 
   Description: Allows you to use Robokassa payment gateway with the WooCommerce plugin.
-  Version: 0.6
+  Version: 0.7
   Author: Alexander Kurganov
   Author URI: http://polzo.ru
  */
@@ -84,6 +84,8 @@ class WC_ROBOKASSA extends WC_Payment_Gateway
 		$this->robokassa_key2 = $this->settings['robokassa_key2'];
 		$this->testmode = $this->settings['testmode'];
 		$this->debug = $this->settings['debug'];
+		$this->description = $this->settings['description'];
+		$this->instructions = $this->settings['instructions'];
 
 		// Logs
 		if ($this->debug == 'yes')
@@ -170,14 +172,14 @@ class WC_ROBOKASSA extends WC_Payment_Gateway
 					'title' => __('Пароль #1', 'woocommerce'),
 					'type' => 'password',
 					'description' => __('Пожалуйста введите паоль №1.', 'woocommerce'),
-					'default' => 'demo'
+					'default' => ''
 				),
 				'robokassa_key2' => array
 				(
 					'title' => __('Пароль #2', 'woocommerce'),
 					'type' => 'password',
 					'description' => __('Пожалуйста введите пароль №2.', 'woocommerce'),
-					'default' => 'demo'
+					'default' => ''
 				),
 				'testmode' => array(
 					'title' => __('Тест режим', 'woocommerce'),
@@ -191,6 +193,18 @@ class WC_ROBOKASSA extends WC_Payment_Gateway
 					'type' => 'checkbox',
 					'label' => __('Включить логирование (<code>woocommerce/logs/paypal.txt</code>)', 'woocommerce'),
 					'default' => 'no'
+				),
+				'description' => array(
+					'title' => __( 'Description', 'woocommerce' ),
+					'type' => 'textarea',
+					'description' => __( 'Payment method description that the customer will see on your website.', 'woocommerce' ),
+					'default' => 'Pay with cash upon delivery.'
+				),
+				'instructions' => array(
+					'title' => __( 'Instructions', 'woocommerce' ),
+					'type' => 'textarea',
+					'description' => __( 'Instructions that will be added to the thank you page.', 'woocommerce' ),
+					'default' => 'Pay with cash upon delivery.'
 				)
 			);
 	}
@@ -297,7 +311,6 @@ class WC_ROBOKASSA extends WC_Payment_Gateway
 	function receipt_page($order)
 	{
 		echo '<p>'.__('Спасибо за Ваш заказ, пожалуйста, нажмите кнопку ниже, чтобы заплатить.', 'woocommerce').'</p>';
-		echo '<p><sub>'.__('Поддержка robokassa реализована <a href="http://loom-studio.net">loom-studio</a> и <a href="http://polzo.ru">akurganow</a>').'</sub></p>';
 		echo $this->generate_form($order);
 	}
 	
@@ -345,6 +358,8 @@ class WC_ROBOKASSA extends WC_Payment_Gateway
 			$inv_id = $_POST['InvId'];
 			$order = new WC_Order($inv_id);
 			$order->update_status('on-hold', __('Платеж успешно оплачен', 'woocommerce'));
+			// Reduce stock levels
+			$order->reduce_order_stock();
 			$woocommerce->cart->empty_cart();
 			wp_redirect(add_query_arg('key', $order->order_key, add_query_arg('order', $inv_id, get_permalink(get_option('woocommerce_thanks_page_id')))));
 			exit;
