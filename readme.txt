@@ -14,11 +14,12 @@ Allows you to use Robokassa payment gateway with the WooCommerce plugin.
 
 
 В Robokassa прописываем:
-* Result URL: http://your_domain/?robokassa=result
-* Success URL: http://your_domain/?robokassa=success
-* Fail URL: http://your_domain/woocommerce/?robokassa=fail
-* Метод отсылки данных: POST
-
+<ul style="list-style:none;">
+<li>Result URL: http://your_domain/?robokassa=result</li>
+<li>Success URL: http://your_domain/?robokassa=success</li>
+<li>Fail URL: http://your_domain/woocommerce/?robokassa=fail</li>
+<li>Метод отсылки данных: POST</li>
+</ul>
 
 Более подробно на <a href="//polzo.ru/wc-robokassa">странице плагина</a><br>
 
