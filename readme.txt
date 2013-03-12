@@ -9,29 +9,32 @@ Allows you to use Robokassa payment gateway with the WooCommerce plugin.
 
 == Description ==
 
-* После активации плагина через панель управления в WooCommerce прописывем
-Логин мерчат, пароль 1, пароль 2
+После активации плагина через панель управления в WooCommerce прописывем
+Логин мерчат, пароль 1, пароль 2 узнать их можно в [личном кабинете robokassa](https://www.roboxchange.com/Environment/Partners/Login/Merchant/Registration.aspx)
 
 
-* В Robokassa прописываем:
-** Result URL: http://your_domain/?robokassa=result
-** Success URL: http://your_domain/?robokassa=success
-** Fail URL: http://your_domain/woocommerce/?robokassa=fail
-** Метод отсылки данных: POST
+В Robokassa прописываем:
+* Result URL: http://your_domain/?robokassa=result
+* Success URL: http://your_domain/?robokassa=success
+* Fail URL: http://your_domain/woocommerce/?robokassa=fail
+* Метод отсылки данных: POST
 
-* Более подробно на <a href="//polzo.ru/wc-robokassa">странице плагина</a>
 
-* Плагин теперь в опенсорсе, кто хочет помочь в его разработке прошу на <a href="https://github.com/Akurganow/WooCommerce-Robokassa">GitHub</a>
+Более подробно на <a href="//polzo.ru/wc-robokassa">странице плагина</a><br>
+
+
+Плагин теперь в опенсорсе, кто хочет помочь в его разработке прошу на [GitHub](https://github.com/Akurganow/WooCommerce-Robokassa)
 
 
 == Installation ==
-
 1. Убедитесь что у вас установлена посленяя версия плагина <a href="//www.woothemes.com/woocommerce" title="WooCommerce">WooCommerce</a>
 2. Распакуйте архив и загрузите "robokassa-for-woocommerce" в папку ваш-домен/wp-content/plugins
 3. Активируйте плагин
 
 
 == Changelog ==
+= 0.8 = 
+* Совместимость с WooCommerce 2
 = 0.7 =
 * Добавлены поля description и instructions спасибо пользователю <a href="https://twitter.com/vladsg" target="_blank">@vladsg</a> 
 = 0.6 =
