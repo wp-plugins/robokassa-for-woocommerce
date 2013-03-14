@@ -3,7 +3,7 @@
   Plugin Name: Robokassa Payment Gateway
   Plugin URI: 
   Description: Allows you to use Robokassa payment gateway with the WooCommerce plugin.
-  Version: 0.8.2
+  Version: 0.8.3
   Author: Alexander Kurganov
   Author URI: http://akurganow.ru
  */
@@ -235,27 +235,6 @@ class WC_ROBOKASSA extends WC_Payment_Gateway{
 			$args_array[] = '<input type="hidden" name="'.esc_attr($key).'" value="'.esc_attr($value).'" />';
 		}
 
-		$woocommerce->add_inline_js('
-			jQuery("body").block({ 
-					message: "<img src=\"'.esc_url( $woocommerce->plugin_url() ).'/assets/images/ajax-loader.gif\" alt=\"Redirecting...\" style=\"float:left; margin-right: 10px;\" />'.__('Thank you for your order. We are now redirecting you to PayPal to make payment.', 'woocommerce').'", 
-					overlayCSS: 
-					{ 
-						background: "#fff", 
-						opacity: 0.6 
-					},
-					css: { 
-				        padding:        20, 
-				        textAlign:      "center", 
-				        color:          "#555", 
-				        border:         "3px solid #aaa", 
-				        backgroundColor:"#fff", 
-				        cursor:         "wait",
-				        lineHeight:		"32px"
-				    } 
-				});
-			jQuery("#submit_robokassa_payment_form").click();
-		');
-
 		return
 			'<form action="'.esc_url($action_adr).'" method="POST" id="robokassa_payment_form">'."\n".
 			implode("\n", $args_array).
@@ -321,9 +300,7 @@ class WC_ROBOKASSA extends WC_Payment_Gateway{
 			$inv_id = $_POST['InvId'];
 			$order = new WC_Order($inv_id);
 			$order->update_status('on-hold', __('Платеж успешно оплачен', 'woocommerce'));
-
-		  // Remove cart
-		  $woocommerce->cart->empty_cart();
+			$woocommerce->cart->empty_cart();
 
 			wp_redirect(add_query_arg('key', $order->order_key, add_query_arg('order', $inv_id, get_permalink(get_option('woocommerce_thanks_page_id')))));
 			exit;
@@ -332,7 +309,7 @@ class WC_ROBOKASSA extends WC_Payment_Gateway{
 			$inv_id = $_POST['InvId'];
 			$order = new WC_Order($inv_id);
 			$order->update_status('failed', __('Платеж не оплачен', 'woocommerce'));
-			//$woocommerce->cart->empty_cart();
+
 			wp_redirect($order->get_cancel_order_url());
 			exit;
 		}
