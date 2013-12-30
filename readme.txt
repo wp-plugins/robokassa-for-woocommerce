@@ -27,7 +27,7 @@ Allows you to use Robokassa payment gateway with the WooCommerce plugin.
 Плагин теперь в опенсорсе, кто хочет помочь в его разработке прошу на [GitHub](https://github.com/Akurganow/WooCommerce-Robokassa)
 
 
-За помощью обращайтесь на <a href="mailto:help@polzo.ru">help@polzo.ru</a>
+Если возникнут проблемы, <a href="https://github.com/Akurganow/WooCommerce-Robokassa/issues">сообщите об ошибке</a>
 
 
 == Installation ==
