@@ -21,22 +21,24 @@ Allows you to use Robokassa payment gateway with the WooCommerce plugin.
 <li>Метод отсылки данных: POST</li>
 </ul>
 
-Более подробно на <a href="http://akurganow.github.io/WooCommerce-Robokassa/">странице плагина</a><br>
+Более подробно на [странице плагина](http://akurganow.github.io/WooCommerce-Robokassa/)
 
 
 Плагин теперь в опенсорсе, кто хочет помочь в его разработке прошу на [GitHub](https://github.com/Akurganow/WooCommerce-Robokassa)
 
 
-Если возникнут проблемы, <a href="https://github.com/Akurganow/WooCommerce-Robokassa/issues">сообщите об ошибке</a>
+Если возникнут проблемы, [сообщите об ошибке](https://github.com/Akurganow/WooCommerce-Robokassa/issues)
 
 
 == Installation ==
-1. Убедитесь что у вас установлена посленяя версия плагина <a href="//www.woothemes.com/woocommerce" title="WooCommerce">WooCommerce</a>
+1. Убедитесь что у вас установлена посленяя версия плагина [WooCommerce](/www.woothemes.com/woocommerce)
 2. Распакуйте архив и загрузите "robokassa-for-woocommerce" в папку ваш-домен/wp-content/plugins
 3. Активируйте плагин
 
 
 == Changelog ==
+= 0.9 =
+* [Совместимость и WooCommerce 2.1.2](https://github.com/Akurganow/WooCommerce-Robokassa/issues/2)
 = 0.8 = 
 * Совместимость с WooCommerce 2
 = 0.7 =
@@ -59,7 +61,5 @@ Allows you to use Robokassa payment gateway with the WooCommerce plugin.
 * Решена проблема с обновлением данных в БД
 = 0.1.2 =
 * Исправления ошибок
-= 0.1.1 =
-* Добавлены ограничения бесплатной версии
 = 0.1 =
 * Релиз плагина
